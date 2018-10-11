@@ -1,0 +1,128 @@
+**PEOPLE**
+
+DROP TABLE IF EXISTS person;
+
+CREATE TABLE person (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT,
+  age NUMBER,
+  height NUMBER,
+  city TEXT,
+  favorite_color TEXT
+);
+
+INSERT INTO person (name, age, height, city, favorite_color)
+VALUES
+('Joe', 20, 50, 'Chicago', 'blue'),('Max', 21, 49, 'New York', 'green'),('Sarah', 22, 67, 'Milwaukee', 'yellow'),('Kenia', 22, 40, 'Chicago', 'blue'),('Krystal', 24, 56, 'Phoenix', 'purple');
+  
+SELECT * FROM person 
+ORDER BY height
+
+SELECT * FROM person 
+ORDER BY height DESC
+
+SELECT * FROM person 
+ORDER BY age DESC
+
+SELECT * FROM person 
+WHERE age > 20
+
+SELECT * FROM person 
+WHERE age = 18
+
+SELECT * FROM person 
+WHERE age < 20 OR age > 30
+
+SELECT * FROM person 
+WHERE age != 27
+
+SELECT * FROM person 
+WHERE favorite_color != 'red'
+
+SELECT * FROM person 
+WHERE favorite_color != 'red' AND favorite_color != 'blue
+
+SELECT * FROM person 
+WHERE favorite_color = 'orange' OR favorite_color = 'green'
+
+SELECT * FROM person 
+WHERE 
+(favorite_color) IN ('orange','green', 'blue')
+
+SELECT * FROM person 
+WHERE 
+(favorite_color) IN ('yellow','purple')
+
+
+**ORDERS**
+
+CREATE TABLE orders (
+  PersonID INTEGER PRIMARY KEY AUTOINCREMENT,
+  ProductName TEXT,
+  ProductPrice INTEGER,
+  Quantity INTEGER
+  );
+
+  INSERT INTO orders
+(ProductName, ProductPrice, Quantity)
+VALUES
+('product1', 5.56, 6),
+('product2', 20.34, 4),
+('product3', 12.44, 1),
+('product4', 483.46, 7),
+('product5', 5.67, 3)
+
+SELECT * FROM orders
+
+SELECT SUM(Quantity) FROM orders
+
+SELECT SUM(ProductPrice) FROM orders
+
+SELECT SUM(ProductPrice) FROM orders GROUP BY PersonID;
+
+INSERT INTO Artist
+( Name )
+VALUES
+( 'Tesseract' ),
+( 'Excition' ),
+( 'Boogie T' );
+
+SELECT * FROM Artist
+ORDER BY Name DESC LIMIT 10;
+
+SELECT * FROM Artist
+ORDER BY Name LIMIT 5;
+
+SELECT * FROM Artist WHERE Name LIKE 'Black%';
+
+SELECT * FROM Artist WHERE Name LIKE '%Black%';
+
+**EMPLOYEE**
+
+SELECT FirstName, LastName FROM Employee WHERE City = "Calgary";
+
+SELECT FirstName, LastName, Max(BirthDate) FROM Employee;
+
+SELECT FirstName, LastName, Min(BirthDate) FROM Employee;
+
+SELECT * FROM Employee WHERE ReportsTo = 2;
+
+SELECT COUNT(*) FROM Employee WHERE City = "Lethbridge";
+
+**INVOICE**
+
+SELECT Count(*) FROM Invoice WHERE BillingCountry = 'USA';
+
+SELECT Max(total) FROM Invoice;
+
+SELECT Min(total) FROM Invoice;
+
+SELECT * FROM Invoice WHERE Total > 5;
+
+SELECT COUNT(*) FROM Invoice WHERE Total < 5;
+
+SELECT Count(*) FROM Invoice WHERE BillingState in ('CA', 'TX', 'AZ');
+
+SELECT AVG(Total) FROM Invoice;
+
+SELECT SUM(Total) FROM Invoice;
